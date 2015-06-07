@@ -45,7 +45,7 @@ public class NewsFatherFragment extends Fragment {
 
     @AfterViews
     void afterViews() {
-        Layer layer=new ArcGISTiledMapServiceLayer(
+        ArcGISTiledMapServiceLayer  layer=new ArcGISTiledMapServiceLayer(
                 "http://gis.ncgl.cn/arcgis/rest/services/ahsjcl/MapServer") ;
         mMapView.addLayer(layer);
     }
