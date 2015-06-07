@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.esri.android.map.MapView;
 import com.google.inject.Inject;
 import com.smooth.R;
 import org.androidannotations.annotations.*;
@@ -33,7 +34,8 @@ public class NewsFatherFragment extends Fragment {
     NewsPopFragment mPopView;
     @ViewById(R.id.child_fragment)
     FrameLayout frameLayout;
-
+    @ViewById(R.id.map)
+    MapView mMapView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return null;
@@ -41,5 +43,23 @@ public class NewsFatherFragment extends Fragment {
 
     @AfterViews
     void afterViews() {
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mMapView != null)
+        {
+            mMapView.pause();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mMapView != null)
+        {
+            mMapView.unpause();
+        }
     }
 }

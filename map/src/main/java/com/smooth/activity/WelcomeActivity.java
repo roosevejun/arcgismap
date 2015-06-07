@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import com.esri.android.runtime.ArcGISRuntime;
+import com.esri.core.runtime.LicenseLevel;
+import com.esri.core.runtime.LicenseResult;
 import com.google.inject.Inject;
 import com.smooth.R;
+import com.smooth.fragment.MessageDialogFragment;
 import com.smooth.interfaces.SysPrefs_;
 import com.smooth.listener.WelcomeListener;
 import com.smooth.manager.SDManager;
-import com.smooth.service.GreetingService;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.RoboGuice;
@@ -41,10 +44,19 @@ public class WelcomeActivity extends Activity {
     SysPrefs_ sysPrefs;
     @AnimationRes
     Animation login_anim;
-
+    private static final String CLIENT_ID = "fuMPMC61j43x4OMW";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LicenseResult licenseResult = ArcGISRuntime.setClientId(CLIENT_ID);
+
+        LicenseLevel licenseLevel = ArcGISRuntime.License.getLicenseLevel();
+
+        if (licenseResult == LicenseResult.VALID && licenseLevel == LicenseLevel.BASIC) {
+            MessageDialogFragment.showMessage(getString(R.string.basic_license_succeeded), getFragmentManager());
+        } else {
+            MessageDialogFragment.showMessage(getString(R.string.valid_client_id_required), getFragmentManager());
+        }
 
     }
 

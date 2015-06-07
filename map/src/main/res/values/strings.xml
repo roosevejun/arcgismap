@@ -110,4 +110,6 @@
     <string name="storage_warning">没有外部存储设备或SD卡不可用</string>
     <string name="wifi">文件管理</string>
     <string name="firstLogin">true</string>
+    <string name="basic_license_succeeded">地图许可初初始化成功</string>
+    <string name="valid_client_id_required">地图许可初始化失败</string>
 </resources>
