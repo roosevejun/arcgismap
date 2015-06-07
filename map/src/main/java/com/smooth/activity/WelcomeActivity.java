@@ -53,7 +53,7 @@ public class WelcomeActivity extends Activity {
         LicenseLevel licenseLevel = ArcGISRuntime.License.getLicenseLevel();
 
         if (licenseResult == LicenseResult.VALID && licenseLevel == LicenseLevel.BASIC) {
-            MessageDialogFragment.showMessage(getString(R.string.basic_license_succeeded), getFragmentManager());
+//            MessageDialogFragment.showMessage(getString(R.string.basic_license_succeeded), getFragmentManager());
         } else {
             MessageDialogFragment.showMessage(getString(R.string.valid_client_id_required), getFragmentManager());
         }

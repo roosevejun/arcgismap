@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import com.esri.android.map.Layer;
 import com.esri.android.map.MapView;
+import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
 import com.google.inject.Inject;
 import com.smooth.R;
 import org.androidannotations.annotations.*;
@@ -43,6 +45,9 @@ public class NewsFatherFragment extends Fragment {
 
     @AfterViews
     void afterViews() {
+        Layer layer=new ArcGISTiledMapServiceLayer(
+                "http://gis.ncgl.cn/arcgis/rest/services/ahsjcl/MapServer") ;
+        mMapView.addLayer(layer);
     }
 
     @Override
