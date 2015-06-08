@@ -1,6 +1,7 @@
 package com.smooth.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,7 @@ import android.widget.*;
 import com.esri.android.map.Layer;
 import com.esri.android.map.MapView;
 import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
+import com.esri.core.geometry.Envelope;
 import com.google.inject.Inject;
 import com.smooth.R;
 import org.androidannotations.annotations.*;
@@ -38,6 +40,7 @@ public class NewsFatherFragment extends Fragment {
     FrameLayout frameLayout;
     @ViewById(R.id.map)
     MapView mMapView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return null;
@@ -45,16 +48,19 @@ public class NewsFatherFragment extends Fragment {
 
     @AfterViews
     void afterViews() {
-        Layer layer=new ArcGISTiledMapServiceLayer(
-                "http://gis.ncgl.cn/arcgis/rest/services/ahsjcl/MapServer") ;
+        Layer layer = new ArcGISTiledMapServiceLayer(
+                "http://gis.ncgl.cn/arcgis/rest/services/ahsjcl/MapServer");
         mMapView.addLayer(layer);
+        Envelope env = new Envelope(112.0430241488649, 31.053927855037358, 122.28410340624811, 34.718447852153574);
+        mMapView. setExtent(env);
+        mMapView.setMapBackground(0xffffffff, Color.TRANSPARENT, 0, 0);
+        mMapView.setAllowRotationByPinch(true);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mMapView != null)
-        {
+        if (mMapView != null) {
             mMapView.pause();
         }
     }
@@ -62,8 +68,7 @@ public class NewsFatherFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (mMapView != null)
-        {
+        if (mMapView != null) {
             mMapView.unpause();
         }
     }

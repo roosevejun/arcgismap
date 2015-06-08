@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
     <FrameLayout
-        android:id="@+id/child_fragment"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_below="@id/title_bar">
+            android:id="@+id/child_fragment"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_below="@id/title_bar">
         <com.esri.android.map.MapView
                 android:id="@+id/map"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                mapoptions.MapType="Topo"
-                mapoptions.center="31.199746807041354, 115.22291801811006"
-                mapoptions.ZoomLevel="4" />
+                />
     </FrameLayout>
 </RelativeLayout>
