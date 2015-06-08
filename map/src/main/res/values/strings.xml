@@ -112,4 +112,8 @@
     <string name="firstLogin">true</string>
     <string name="basic_license_succeeded">地图许可初初始化成功</string>
     <string name="valid_client_id_required">地图许可初始化失败</string>
+    <string name="action_go_offline">Go Offline</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_go_online">Go Online</string>
+    <string name="geodatabase_filename">offlinedata</string>
 </resources>
